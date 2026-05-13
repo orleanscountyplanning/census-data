@@ -1,1 +1,741 @@
-<h1>Coming Soon</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Orleans County Census Data Factsheets</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,600;1,8..60,300&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy:      #2A5598;
+  --navy-dk:   #1a2f5e;
+  --navy-lt:   #2B68B5;
+  --accent:    #4899E0;
+  --accent-lt: #D6E4F5;
+  --rule:      #BDD4EC;
+  --text:      #1a2f5e;
+  --muted:     #4A5568;
+  --light:     #F4F6F9;
+  --white:     #ffffff;
+  --border:    #dde3ed;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Source Sans 3', sans-serif; background: var(--light); color: var(--text); min-height: 100vh; }
+
+/* HEADER */
+header { background: var(--navy-dk); border-bottom: 4px solid var(--accent); padding: 0 40px; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.25); }
+.header-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.header-brand { display: flex; align-items: center; gap: 14px; }
+.header-logo { width: 58px; height: 58px; flex-shrink: 0; }
+.header-logo img { width: 100%; height: 100%; object-fit: contain; }
+.header-text-top { font-size: 14px; font-weight: 700; color: var(--white); line-height: 1.2; }
+.header-text-sub { font-size: 10px; color: rgba(255,255,255,0.5); letter-spacing: 0.06em; text-transform: uppercase; margin-top: 2px; }
+.header-nav { display: flex; gap: 6px; align-items: center; }
+.header-nav a { font-size: 12px; font-weight: 600; color: rgba(255,255,255,0.75); text-decoration: none; padding: 6px 12px; border-radius: 5px; transition: background 0.2s; white-space: nowrap; }
+.header-nav a:hover { background: rgba(255,255,255,0.1); color: var(--white); }
+
+/* HERO */
+.hero { background: var(--navy); padding: 60px 40px 52px; position: relative; overflow: hidden; border-bottom: 4px solid var(--accent); }
+.hero::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(-55deg, transparent, transparent 38px, rgba(255,255,255,0.018) 38px, rgba(255,255,255,0.018) 39px); pointer-events: none; }
+.hero-inner { max-width: 1100px; margin: 0 auto; position: relative; z-index: 1; display: flex; align-items: center; gap: 60px; }
+.hero-left { flex: 1; }
+.hero h1 { font-family: 'Source Serif 4', serif; font-size: 40px; font-weight: 600; color: var(--white); line-height: 1.18; margin-bottom: 16px; }
+.hero h1 em { font-style: italic; color: rgba(255,255,255,0.65); font-weight: 300; }
+.hero-desc { font-size: 15px; color: rgba(255,255,255,0.7); line-height: 1.75; margin-bottom: 28px; }
+.hero-meta { display: flex; gap: 28px; flex-wrap: wrap; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.12); }
+.hero-stat { display: flex; flex-direction: column; gap: 3px; }
+.hero-stat-num { font-size: 26px; font-weight: 700; color: var(--white); line-height: 1; }
+.hero-stat-lbl { font-size: 11px; color: rgba(255,255,255,0.45); letter-spacing: 0.06em; text-transform: uppercase; }
+.hero-divider { width: 1px; height: 40px; background: rgba(255,255,255,0.15); align-self: center; }
+.hero-quote { flex: 0 0 280px; border-left: 1px solid rgba(255,255,255,0.15); padding-left: 36px; align-self: center; }
+.hero-quote-mark { font-size: 52px; color: rgba(255,255,255,0.18); font-family: 'Source Serif 4', serif; line-height: 1; margin-bottom: 10px; }
+.hero-quote p { font-family: 'Source Serif 4', serif; font-size: 16px; font-weight: 300; font-style: italic; color: rgba(255,255,255,0.88); line-height: 1.7; margin-bottom: 16px; }
+.hero-quote-rule { width: 32px; height: 2px; background: var(--accent); margin-bottom: 10px; }
+.hero-quote-attr { font-size: 11px; font-weight: 700; color: rgba(255,255,255,0.45); letter-spacing: 0.06em; text-transform: uppercase; line-height: 1.6; }
+
+/* VINTAGE BADGE */
+.vintage-bar { background: var(--accent-lt); border-bottom: 1px solid var(--rule); padding: 10px 40px; }
+.vintage-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; gap: 12px; font-size: 12px; color: var(--navy-dk); }
+.vintage-badge { background: var(--navy); color: var(--white); font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 3px; letter-spacing: 0.05em; white-space: nowrap; }
+
+/* MAIN */
+.main { max-width: 1100px; margin: 0 auto; padding: 40px 40px 64px; }
+
+/* SEARCH */
+.search-section { margin-bottom: 24px; }
+.muni-search-wrap { position: relative; }
+.muni-search-icon { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); font-size: 16px; color: var(--muted); pointer-events: none; }
+.muni-search { width: 100%; padding: 12px 40px 12px 42px; font-size: 14px; font-family: 'Source Sans 3', sans-serif; border: 1px solid var(--border); border-radius: 8px; background: var(--white); color: var(--text); outline: none; transition: border-color 0.2s, box-shadow 0.2s; box-shadow: 0 1px 4px rgba(0,0,0,0.04); }
+.muni-search:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(72,153,224,0.15); }
+.muni-search::placeholder { color: #94a3b8; }
+.muni-search-clear { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); font-size: 20px; color: #94a3b8; cursor: pointer; display: none; background: none; border: none; line-height: 1; }
+.no-results { display: none; text-align: center; padding: 32px; color: var(--muted); font-size: 13px; background: var(--white); border: 1px solid var(--border); border-radius: 8px; margin-bottom: 14px; }
+
+/* SECTION HEADERS */
+.section-hdr { display: flex; align-items: center; gap: 14px; margin-bottom: 18px; margin-top: 32px; }
+.section-hdr:first-of-type { margin-top: 0; }
+.section-hdr-label { font-size: 11px; font-weight: 700; color: var(--white); letter-spacing: 0.08em; text-transform: uppercase; background: var(--navy); padding: 4px 12px; border-radius: 3px; white-space: nowrap; width: fit-content; }
+.section-hdr-line { flex: 1; height: 1px; background: var(--rule); }
+.section-hdr-count { font-size: 11px; color: var(--muted); white-space: nowrap; }
+
+/* GRID */
+.muni-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(310px, 1fr)); gap: 14px; margin-bottom: 16px; }
+
+/* CARDS */
+.muni-card { background: var(--white); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column; transition: box-shadow 0.2s, transform 0.2s; }
+.muni-card:hover { box-shadow: 0 4px 18px rgba(42,85,152,0.12); transform: translateY(-2px); }
+.muni-card-top { background: var(--navy); padding: 14px 16px 12px; border-bottom: 3px solid var(--accent); }
+.muni-type-badge { background: rgba(255,255,255,0.14); border-radius: 3px; padding: 2px 7px; font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.7); letter-spacing: 0.06em; width: fit-content; }
+.muni-card-name { font-size: 15px; font-weight: 700; color: var(--white); margin-top: 7px; }
+
+/* DATA PREVIEW LABEL */
+.data-preview-label { font-size: 10px; font-weight: 700; color: var(--muted); letter-spacing: 0.08em; text-transform: uppercase; padding: 8px 14px 4px; }
+
+/* STATS GRID */
+.muni-stats { display: grid; grid-template-columns: 1fr 1fr; border-bottom: 1px solid var(--border); }
+.stat { padding: 10px 14px; border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.stat:nth-child(2n) { border-right: none; }
+.stat:nth-child(3), .stat:nth-child(4) { border-bottom: none; }
+.stat-val { font-size: 16px; font-weight: 700; color: var(--navy); line-height: 1.2; }
+.stat-lbl { font-size: 10px; color: var(--muted); margin-top: 2px; letter-spacing: 0.02em; }
+
+.muni-card-body { padding: 12px 16px 14px; flex: 1; display: flex; flex-direction: column; gap: 10px; }
+.muni-tags { display: flex; flex-wrap: wrap; gap: 5px; }
+.muni-tag { background: var(--accent-lt); color: var(--navy-dk); font-size: 10px; font-weight: 600; border-radius: 3px; padding: 2px 7px; }
+.muni-btn { margin-top: auto; display: inline-flex; align-items: center; gap: 6px; background: var(--navy); color: var(--white); font-size: 12px; font-weight: 700; padding: 8px 14px; border-radius: 5px; text-decoration: none; transition: background 0.2s; width: fit-content; font-family: 'Source Sans 3', sans-serif; }
+.muni-btn:hover { background: var(--navy-lt); }
+
+/* INFO PANEL */
+.info-panel { background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 22px 24px; margin-top: 32px; border-left: 4px solid var(--accent); }
+.info-panel h3 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+.info-panel p { font-size: 12px; color: var(--muted); line-height: 1.7; }
+.info-panel a { color: var(--accent); text-decoration: none; font-weight: 600; }
+.info-panel a:hover { text-decoration: underline; }
+
+/* BACK TO TOP */
+.btt { position: fixed; bottom: 24px; right: 24px; width: 42px; height: 42px; background: var(--navy); color: var(--white); border: none; border-radius: 50%; font-size: 20px; cursor: pointer; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 14px rgba(42,85,152,0.4); opacity: 0; transform: translateY(10px); transition: opacity 0.25s, transform 0.25s; pointer-events: none; z-index: 200; }
+.btt.visible { opacity: 1; transform: translateY(0); pointer-events: all; }
+.btt:hover { background: var(--navy-lt); }
+
+/* FOOTER */
+footer { background: var(--navy-dk); border-top: 4px solid var(--accent); padding: 32px 40px; }
+.footer-inner { max-width: 1100px; margin: 0 auto; }
+.footer-left { font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.8; }
+.footer-left strong { color: rgba(255,255,255,0.75); }
+
+@media (max-width: 700px) {
+  .hero { padding: 36px 20px 32px; }
+  .hero h1 { font-size: 28px; }
+  .hero-inner { flex-direction: column; gap: 32px; }
+  .hero-quote { border-left: none; border-top: 1px solid rgba(255,255,255,0.15); padding-left: 0; padding-top: 24px; flex: none; width: 100%; }
+  .main { padding: 28px 20px 48px; }
+  header { padding: 0 20px; }
+  footer { padding: 24px 20px; }
+  .vintage-bar { padding: 10px 20px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="header-brand">
+      <div class="header-logo"><img src="./logo.png" alt="Orleans County Planning" onerror="this.style.display='none'"></div>
+      <div>
+        <div class="header-text-top">Orleans County Planning and Development Department</div>
+        <div class="header-text-sub">Census Data Factsheets</div>
+      </div>
+    </div>
+    <nav class="header-nav">
+      <a href="https://orleanscountyplanning.github.io/municipal-zoning/">Municipal Zoning Directory</a>
+      <a href="https://www.orleanscountyny.gov/departments/planning" target="_blank">Planning Department Website</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-left">
+      <h1>Census Data<br><em>Factsheets</em></h1>
+      <p class="hero-desc">Demographic and socioeconomic profiles for Orleans County and each of its municipalities, derived from the U.S. Census Bureau American Community Survey. Each factsheet covers population, income, housing, employment, and more.</p>
+      <div class="hero-meta">
+        <div class="hero-stat"><div class="hero-stat-num">15</div><div class="hero-stat-lbl">Factsheets</div></div>
+        <div class="hero-divider"></div>
+        <div class="hero-stat"><div class="hero-stat-num">39,608</div><div class="hero-stat-lbl">County Population</div></div>
+        <div class="hero-divider"></div>
+        <div class="hero-stat"><div class="hero-stat-num">10 Towns · 4 Villages</div><div class="hero-stat-lbl">Geographic Scope</div></div>
+      </div>
+    </div>
+    <div class="hero-quote">
+      <div class="hero-quote-mark">&ldquo;</div>
+      <p>The American Community Survey helps local officials, community leaders, and businesses understand the changes taking place in their communities.</p>
+      <div class="hero-quote-rule"></div>
+      <div class="hero-quote-attr">U.S. Census Bureau<br>American Community Survey</div>
+    </div>
+  </div>
+</div>
+
+<div class="vintage-bar">
+  <div class="vintage-inner">
+    <div class="vintage-badge">DATA SOURCE</div>
+    U.S. Census Bureau &nbsp;&middot;&nbsp; American Community Survey 5-Year Estimates, 2020&ndash;2024 &nbsp;&middot;&nbsp; <a href="https://data.census.gov" target="_blank" style="color:var(--navy);font-weight:600;">data.census.gov</a>
+  </div>
+</div>
+
+<main class="main">
+
+  <div class="search-section">
+    <div class="muni-search-wrap">
+      <span class="muni-search-icon">&#128269;</span>
+      <input class="muni-search" id="muniSearch" type="text" placeholder="Search municipalities..." oninput="filterMunis(this.value)">
+      <button class="muni-search-clear" id="muniClear" onclick="clearMuniSearch()">&#215;</button>
+    </div>
+  </div>
+  <div class="no-results" id="noResults">No municipalities match your search. Try a town or village name.</div>
+
+  
+  <div class="section-hdr">
+    <div class="section-hdr-label">County</div>
+    <div class="section-hdr-line"></div>
+    <div class="section-hdr-count">1 geography</div>
+  </div>
+  <div class="muni-grid">
+
+    <div class="muni-card">
+      <div class="muni-card-top">
+        <div>
+          <div class="muni-type-badge">COUNTY</div>
+          <div class="muni-card-name">Orleans County</div>
+        </div>
+      </div>
+      <div class="data-preview-label">Data Preview</div>
+      <div class="muni-stats">
+        <div class="stat">
+          <div class="stat-val">39,608</div>
+          <div class="stat-lbl">Population</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">$65,969</div>
+          <div class="stat-lbl">Median HH Income</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">$140,800</div>
+          <div class="stat-lbl">Median Home Value</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">12.7%</div>
+          <div class="stat-lbl">Poverty Rate</div>
+        </div>
+      </div>
+      <div class="muni-card-body">
+        <a class="muni-btn" href="./factsheets/Orleans_County_Factsheet.pdf" target="_blank">View Factsheet &#8594;</a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="section-hdr">
+    <div class="section-hdr-label">Towns</div>
+    <div class="section-hdr-line"></div>
+    <div class="section-hdr-count">10 municipalities</div>
+  </div>
+  <div class="muni-grid">
+
+    <div class="muni-card">
+      <div class="muni-card-top">
+        <div>
+          <div class="muni-type-badge">TOWN</div>
+          <div class="muni-card-name">Town of Albion</div>
+        </div>
+      </div>
+      <div class="data-preview-label">Data Preview</div>
+      <div class="muni-stats">
+        <div class="stat">
+          <div class="stat-val">7,206</div>
+          <div class="stat-lbl">Population</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">$49,779</div>
+          <div class="stat-lbl">Median HH Income</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">$102,400</div>
+          <div class="stat-lbl">Median Home Value</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">17.7%</div>
+          <div class="stat-lbl">Poverty Rate</div>
+        </div>
+      </div>
+      <div class="muni-card-body">
+        <a class="muni-btn" href="./factsheets/Town_of_Albion_Factsheet.pdf" target="_blank">View Factsheet &#8594;</a>
+      </div>
+    </div>
+
+    <div class="muni-card">
+      <div class="muni-card-top">
+        <div>
+          <div class="muni-type-badge">TOWN</div>
+          <div class="muni-card-name">Town of Barre</div>
+        </div>
+      </div>
+      <div class="data-preview-label">Data Preview</div>
+      <div class="muni-stats">
+        <div class="stat">
+          <div class="stat-val">1,910</div>
+          <div class="stat-lbl">Population</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">$73,906</div>
+          <div class="stat-lbl">Median HH Income</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">$135,900</div>
+          <div class="stat-lbl">Median Home Value</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">23.4%</div>
+          <div class="stat-lbl">Poverty Rate</div>
+        </div>
+      </div>
+      <div class="muni-card-body">
+        <a class="muni-btn" href="./factsheets/Town_of_Barre_Factsheet.pdf" target="_blank">View Factsheet &#8594;</a>
+      </div>
+    </div>
+
+    <div class="muni-card">
+      <div class="muni-card-top">
+        <div>
+          <div class="muni-type-badge">TOWN</div>
+          <div class="muni-card-name">Town of Carlton</div>
+        </div>
+      </div>
+      <div class="data-preview-label">Data Preview</div>
+      <div class="muni-stats">
+        <div class="stat">
+          <div class="stat-val">2,808</div>
+          <div class="stat-lbl">Population</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">$81,678</div>
+          <div class="stat-lbl">Median HH Income</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">$158,800</div>
+          <div class="stat-lbl">Median Home Value</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">11.7%</div>
+          <div class="stat-lbl">Poverty Rate</div>
+        </div>
+      </div>
+      <div class="muni-card-body">
+        <a class="muni-btn" href="./factsheets/Town_of_Carlton_Factsheet.pdf" target="_blank">View Factsheet &#8594;</a>
+      </div>
+    </div>
+
+    <div class="muni-card">
+      <div class="muni-card-top">
+        <div>
+          <div class="muni-type-badge">TOWN</div>
+          <div class="muni-card-name">Town of Clarendon</div>
+        </div>
+      </div>
+      <div class="data-preview-label">Data Preview</div>
+      <div class="muni-stats">
+        <div class="stat">
+          <div class="stat-val">3,322</div>
+          <div class="stat-lbl">Population</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">$57,604</div>
+          <div class="stat-lbl">Median HH Income</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">$179,700</div>
+          <div class="stat-lbl">Median Home Value</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">10.1%</div>
+          <div class="stat-lbl">Poverty Rate</div>
+        </div>
+      </div>
+      <div class="muni-card-body">
+        <a class="muni-btn" href="./factsheets/Town_of_Clarendon_Factsheet.pdf" target="_blank">View Factsheet &#8594;</a>
+      </div>
+    </div>
+
+    <div class="muni-card">
+      <div class="muni-card-top">
+        <div>
+          <div class="muni-type-badge">TOWN</div>
+          <div class="muni-card-name">Town of Gaines</div>
+        </div>
+      </div>
+      <div class="data-preview-label">Data Preview</div>
+      <div class="muni-stats">
+        <div class="stat">
+          <div class="stat-val">3,216</div>
+          <div class="stat-lbl">Population</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">$56,582</div>
+          <div class="stat-lbl">Median HH Income</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">$125,800</div>
+          <div class="stat-lbl">Median Home Value</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">10.6%</div>
+          <div class="stat-lbl">Poverty Rate</div>
+        </div>
+      </div>
+      <div class="muni-card-body">
+        <a class="muni-btn" href="./factsheets/Town_of_Gaines_Factsheet.pdf" target="_blank">View Factsheet &#8594;</a>
+      </div>
+    </div>
+
+    <div class="muni-card">
+      <div class="muni-card-top">
+        <div>
+          <div class="muni-type-badge">TOWN</div>
+          <div class="muni-card-name">Town of Kendall</div>
+        </div>
+      </div>
+      <div class="data-preview-label">Data Preview</div>
+      <div class="muni-stats">
+        <div class="stat">
+          <div class="stat-val">2,591</div>
+          <div class="stat-lbl">Population</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">$87,734</div>
+          <div class="stat-lbl">Median HH Income</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">$191,200</div>
+          <div class="stat-lbl">Median Home Value</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">6.9%</div>
+          <div class="stat-lbl">Poverty Rate</div>
+        </div>
+      </div>
+      <div class="muni-card-body">
+        <a class="muni-btn" href="./factsheets/Town_of_Kendall_Factsheet.pdf" target="_blank">View Factsheet &#8594;</a>
+      </div>
+    </div>
+
+    <div class="muni-card">
+      <div class="muni-card-top">
+        <div>
+          <div class="muni-type-badge">TOWN</div>
+          <div class="muni-card-name">Town of Murray</div>
+        </div>
+      </div>
+      <div class="data-preview-label">Data Preview</div>
+      <div class="muni-stats">
+        <div class="stat">
+          <div class="stat-val">4,754</div>
+          <div class="stat-lbl">Population</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">$65,077</div>
+          <div class="stat-lbl">Median HH Income</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">$123,800</div>
+          <div class="stat-lbl">Median Home Value</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">10.0%</div>
+          <div class="stat-lbl">Poverty Rate</div>
+        </div>
+      </div>
+      <div class="muni-card-body">
+        <a class="muni-btn" href="./factsheets/Town_of_Murray_Factsheet.pdf" target="_blank">View Factsheet &#8594;</a>
+      </div>
+    </div>
+
+    <div class="muni-card">
+      <div class="muni-card-top">
+        <div>
+          <div class="muni-type-badge">TOWN</div>
+          <div class="muni-card-name">Town of Ridgeway</div>
+        </div>
+      </div>
+      <div class="data-preview-label">Data Preview</div>
+      <div class="muni-stats">
+        <div class="stat">
+          <div class="stat-val">6,514</div>
+          <div class="stat-lbl">Population</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">$69,516</div>
+          <div class="stat-lbl">Median HH Income</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">$149,900</div>
+          <div class="stat-lbl">Median Home Value</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">10.4%</div>
+          <div class="stat-lbl">Poverty Rate</div>
+        </div>
+      </div>
+      <div class="muni-card-body">
+        <a class="muni-btn" href="./factsheets/Town_of_Ridgeway_Factsheet.pdf" target="_blank">View Factsheet &#8594;</a>
+      </div>
+    </div>
+
+    <div class="muni-card">
+      <div class="muni-card-top">
+        <div>
+          <div class="muni-type-badge">TOWN</div>
+          <div class="muni-card-name">Town of Shelby</div>
+        </div>
+      </div>
+      <div class="data-preview-label">Data Preview</div>
+      <div class="muni-stats">
+        <div class="stat">
+          <div class="stat-val">4,858</div>
+          <div class="stat-lbl">Population</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">$65,655</div>
+          <div class="stat-lbl">Median HH Income</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">$136,000</div>
+          <div class="stat-lbl">Median Home Value</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">12.5%</div>
+          <div class="stat-lbl">Poverty Rate</div>
+        </div>
+      </div>
+      <div class="muni-card-body">
+        <a class="muni-btn" href="./factsheets/Town_of_Shelby_Factsheet.pdf" target="_blank">View Factsheet &#8594;</a>
+      </div>
+    </div>
+
+    <div class="muni-card">
+      <div class="muni-card-top">
+        <div>
+          <div class="muni-type-badge">TOWN</div>
+          <div class="muni-card-name">Town of Yates</div>
+        </div>
+      </div>
+      <div class="data-preview-label">Data Preview</div>
+      <div class="muni-stats">
+        <div class="stat">
+          <div class="stat-val">2,429</div>
+          <div class="stat-lbl">Population</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">$87,337</div>
+          <div class="stat-lbl">Median HH Income</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">$141,000</div>
+          <div class="stat-lbl">Median Home Value</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">18.8%</div>
+          <div class="stat-lbl">Poverty Rate</div>
+        </div>
+      </div>
+      <div class="muni-card-body">
+        <a class="muni-btn" href="./factsheets/Town_of_Yates_Factsheet.pdf" target="_blank">View Factsheet &#8594;</a>
+      </div>
+    </div>
+  </div>
+  
+  <div class="section-hdr">
+    <div class="section-hdr-label">Villages</div>
+    <div class="section-hdr-line"></div>
+    <div class="section-hdr-count">4 municipalities</div>
+  </div>
+  <div class="muni-grid">
+
+    <div class="muni-card">
+      <div class="muni-card-top">
+        <div>
+          <div class="muni-type-badge">VILLAGE</div>
+          <div class="muni-card-name">Village of Albion</div>
+        </div>
+      </div>
+      <div class="data-preview-label">Data Preview</div>
+      <div class="muni-stats">
+        <div class="stat">
+          <div class="stat-val">5,506</div>
+          <div class="stat-lbl">Population</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">$41,581</div>
+          <div class="stat-lbl">Median HH Income</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">$82,300</div>
+          <div class="stat-lbl">Median Home Value</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">17.9%</div>
+          <div class="stat-lbl">Poverty Rate</div>
+        </div>
+      </div>
+      <div class="muni-card-body">
+        <a class="muni-btn" href="./factsheets/Village_of_Albion_Factsheet.pdf" target="_blank">View Factsheet &#8594;</a>
+      </div>
+    </div>
+
+    <div class="muni-card">
+      <div class="muni-card-top">
+        <div>
+          <div class="muni-type-badge">VILLAGE</div>
+          <div class="muni-card-name">Village of Holley</div>
+        </div>
+      </div>
+      <div class="data-preview-label">Data Preview</div>
+      <div class="muni-stats">
+        <div class="stat">
+          <div class="stat-val">1,927</div>
+          <div class="stat-lbl">Population</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">$64,600</div>
+          <div class="stat-lbl">Median HH Income</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">$122,600</div>
+          <div class="stat-lbl">Median Home Value</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">10.6%</div>
+          <div class="stat-lbl">Poverty Rate</div>
+        </div>
+      </div>
+      <div class="muni-card-body">
+        <a class="muni-btn" href="./factsheets/Village_of_Holley_Factsheet.pdf" target="_blank">View Factsheet &#8594;</a>
+      </div>
+    </div>
+
+    <div class="muni-card">
+      <div class="muni-card-top">
+        <div>
+          <div class="muni-type-badge">VILLAGE</div>
+          <div class="muni-card-name">Village of Lyndonville</div>
+        </div>
+      </div>
+      <div class="data-preview-label">Data Preview</div>
+      <div class="muni-stats">
+        <div class="stat">
+          <div class="stat-val">771</div>
+          <div class="stat-lbl">Population</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">$66,000</div>
+          <div class="stat-lbl">Median HH Income</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">$139,900</div>
+          <div class="stat-lbl">Median Home Value</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">12.9%</div>
+          <div class="stat-lbl">Poverty Rate</div>
+        </div>
+      </div>
+      <div class="muni-card-body">
+        <a class="muni-btn" href="./factsheets/Village_of_Lyndonville_Factsheet.pdf" target="_blank">View Factsheet &#8594;</a>
+      </div>
+    </div>
+
+    <div class="muni-card">
+      <div class="muni-card-top">
+        <div>
+          <div class="muni-type-badge">VILLAGE</div>
+          <div class="muni-card-name">Village of Medina</div>
+        </div>
+      </div>
+      <div class="data-preview-label">Data Preview</div>
+      <div class="muni-stats">
+        <div class="stat">
+          <div class="stat-val">5,770</div>
+          <div class="stat-lbl">Population</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">$59,231</div>
+          <div class="stat-lbl">Median HH Income</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">$107,200</div>
+          <div class="stat-lbl">Median Home Value</div>
+        </div>
+        <div class="stat">
+          <div class="stat-val">12.3%</div>
+          <div class="stat-lbl">Poverty Rate</div>
+        </div>
+      </div>
+      <div class="muni-card-body">
+        <a class="muni-btn" href="./factsheets/Village_of_Medina_Factsheet.pdf" target="_blank">View Factsheet &#8594;</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-panel">
+    <h3>About These Factsheets</h3>
+    <p>These factsheets were produced by the Orleans County Department of Planning and Development using data from the U.S. Census Bureau's American Community Survey (ACS). The ACS is an ongoing survey conducted every year that collects detailed social, economic, housing, and demographic information from a sample of households across the country. Unlike the decennial Census which counts everyone every ten years, the ACS produces estimates based on surveys collected over a rolling 5-year period. The 2020&ndash;2024 estimates presented here represent the most current data available and are based on surveys collected between January 2020 and December 2024, providing a more statistically reliable picture of small communities than single-year estimates can offer. Each factsheet also compares current figures against the 2015&ndash;2019 ACS 5-Year Estimates to show change over time. All estimates are subject to sampling error. For source data and detailed methodology, visit <a href="https://data.census.gov" target="_blank">data.census.gov</a>. For questions about these factsheets, contact the Orleans County Department of Planning and Development.</p>
+  </div>
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-left">
+      <strong>Orleans County Planning and Development Department</strong><br>
+      Census Data Factsheets &nbsp;&middot;&nbsp; 2020&ndash;2024 ACS 5-Year Estimates
+    </div>
+  </div>
+</footer>
+
+<button class="btt" id="btt" title="Back to top">&#8679;</button>
+
+<script>
+window.addEventListener('scroll', function() {
+  document.getElementById('btt').classList.toggle('visible', window.scrollY > 400);
+}, {passive: true});
+document.getElementById('btt').onclick = function() {
+  window.scrollTo({top: 0, behavior: 'smooth'});
+};
+
+function filterMunis(query) {
+  const q = query.trim().toLowerCase();
+  document.getElementById('muniClear').style.display = q ? 'block' : 'none';
+  const cards = document.querySelectorAll('.muni-card');
+  let visible = 0;
+  cards.forEach(function(card) {
+    const name = card.querySelector('.muni-card-name');
+    const match = !q || (name && name.textContent.toLowerCase().includes(q));
+    card.style.display = match ? '' : 'none';
+    if (match) visible++;
+  });
+  document.querySelectorAll('.section-hdr').forEach(function(hdr) {
+    const grid = hdr.nextElementSibling;
+    if (!grid) return;
+    const anyVisible = Array.from(grid.querySelectorAll('.muni-card')).some(c => c.style.display !== 'none');
+    hdr.style.display = anyVisible ? '' : 'none';
+    grid.style.display = anyVisible ? '' : 'none';
+  });
+  document.getElementById('noResults').style.display = visible === 0 ? 'block' : 'none';
+}
+
+function clearMuniSearch() {
+  document.getElementById('muniSearch').value = '';
+  filterMunis('');
+}
+</script>
+</body>
+</html>
